@@ -9,9 +9,14 @@ var Main = React.createClass({
   },
 
   render: function () {
+    var link = "https://www.youtube.com/embed/kOkQ4T5WO9E";
 
     return (
-      <div>hi</div>
+      <div className="video-section group">
+        <div className="video-container">
+          <iframe src={link} frameBorder="0" allowFullScreen></iframe>
+        </div>
+      </div>
     );
   }
 

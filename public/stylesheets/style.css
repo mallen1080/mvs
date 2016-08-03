@@ -1,8 +1,50 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html, body, header, h1, a, ul, li, main, section, img, div, h2, h3, p,
+form, fieldset, label, input, textarea,
+button, article {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  box-sizing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  color: inherit;
+  background: transparent;
 }
 
-a {
-  color: #00B7FF;
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.video-section {
+  background-color: black;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (min-width: 900px) {
+  .video-container {
+    width: 900px;
+    height: 505px;
+    margin: auto;
+    padding: 0;
+  }
 }
