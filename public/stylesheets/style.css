@@ -14,10 +14,18 @@ button, article {
   background: transparent;
 }
 
+body {
+  font-family: 'Comfortaa', cursive;
+}
+
 .group:after {
   content: "";
   display: block;
   clear: both;
+}
+
+.container {
+  background-color: #151515;
 }
 
 .video-section {
@@ -43,20 +51,84 @@ iframe {
 .playlists {
   width: calc(100% - 300px);
   max-width: 810px;
+  padding: 10px 0;
   margin: auto;
+}
+
+.active {
+  margin-bottom: 50px;
 }
 
 .tile {
   display: inline-block;
-  margin: 20px 0 20px 20px;
+  margin: 20px 0 0 20px;
   width: calc(33.33% - 20px);
   max-width: 250px;
   vertical-align: top;
   text-align: center;
+  cursor: pointer;
 }
 
 .tile:nth-child(3n - 2) {
   margin-left: 10px;
+}
+
+.video-img-cont img {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+}
+
+.video-img-cont:hover {
+  opacity: 0.7;
+}
+
+.video-text {
+  background-color: black;
+  padding: 10px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.video-artist {
+  font-size: 20px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+}
+
+.video-title {
+  font-size: 14px;
+  height: 16px;
+  line-height: 16px;
+  color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+h3 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 34px;
+  margin: 20px 20px 0 20px;
+  color: white;
+  cursor: pointer;
+}
+
+h3:hover {
+  text-decoration: underline;
+}
+
+.playlist button {
+  display: block;
+  padding: 5px 10px;
+  background-color: #ccc;
+  margin: 10px auto;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 /*window between 769px and 1000px*/
@@ -97,35 +169,6 @@ iframe {
   .playlists {
     width: 100%;
   }
-}
-
-.video-img-cont img {
-  box-sizing: border-box;
-  width: 100%;
-  height: auto;
-}
-
-.video-img-cont:hover {
-  opacity: 0.7;
-}
-
-.video-artist {
-  font-size: 20px;
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.video-title {
-  font-size: 14px;
-  color: #aaa;
-}
-
-h1 {
-  text-align: center;
-  font-size: 34px;
-  margin: 20px;
 }
 
 @media only screen and (min-width: 900px) {
