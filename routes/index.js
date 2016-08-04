@@ -22,6 +22,11 @@ router.get('/api/playlist', function(req, res, next) {
       responseData += data;
     });
 
+    res.on('error', function () {
+      console.log('error');
+      outRes.json([]);
+    });
+
     res.on('end', function () {
       var results = JSON.parse(responseData).items;
       outRes.json(results);
