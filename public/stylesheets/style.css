@@ -11,7 +11,7 @@ button, article {
   text-decoration: inherit;
   vertical-align: inherit;
   color: inherit;
-  background: transparent;
+  /*background: transparent;*/
 }
 
 body {
@@ -46,6 +46,15 @@ body {
   }
 }
 
+@keyframes listslidedown {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: 3000px;
+  }
+}
+
 .container {
   background-color: #151515;
 }
@@ -75,9 +84,16 @@ iframe {
 }
 
 .playlist ul {
+  max-height: 0;
   width: calc(100% - 300px);
   max-width: 810px;
   margin: auto;
+}
+
+.active ul {
+  max-height: 3000px;
+  animation: listslidedown 6s forwards;
+  overflow: hidden;
 }
 
 .active {
@@ -176,11 +192,11 @@ h3:after {
   border-bottom: 5px solid white;
   width: 0;
   position: absolute;
-  -webkit-transition: 0.7s ease;
-  transition: 0.7s ease;
 }
 
 h3:hover:after {
+  transition: 0.6s ease-in;
+  -webkit-transition: 0.6s ease-in;
   width: calc(100% - 250px);
 }
 
