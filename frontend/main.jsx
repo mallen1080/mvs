@@ -6,20 +6,23 @@ var Playlist = require('./playlist');
 var Main = React.createClass({
 
   getInitialState: function () {
-    return { videoId: "kOkQ4T5WO9E" };
+    return { videoId: "",  playing: null };
   },
 
-  changeVideo: function (videoId) {
-    this.setState({ videoId: videoId });
+  changeVideo: function (videoId, e) {
+    $('.playing').removeClass('playing');
+    $(e.currentTarget).addClass("playing");
+    this.setState({ videoId: videoId, playing: e.currentTarget });
   },
 
   render: function () {
     var link = "https://www.youtube.com/embed/" + this.state.videoId;
+    var videoKlass = this.state.videoId ? "video-container" : "hide";
 
     return (
       <div className="container">
         <div className="video-section group">
-          <div className="video-container">
+          <div className={videoKlass}>
             <iframe src={link} frameBorder="0" allowFullScreen></iframe>
           </div>
         </div>
