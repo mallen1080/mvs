@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var https = require('https');
-var apiKey = require('./apiKey.js').google;
+var apiKey = process.env.API_KEY || require('./apiKey.js').google;
 
-/* GET home page. */
+// GET home page
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'New Music' });
 });
 
+// GET playlist
 router.get('/api/playlist', function(req, res, next) {
   var outRes = res;
   var playlist = req.query.playlist;
@@ -29,6 +30,33 @@ router.get('/api/playlist', function(req, res, next) {
 
     res.on('end', function () {
       var results = JSON.parse(responseData).items;
+      outRes.json(results);
+    });
+  }).end();
+
+});
+
+// GET video stats
+router.get('/api/videostats', function(req, res, next) {
+  var outRes = res;
+  var id = req.query.videoId;
+  var query = "https://www.googleapis.com/youtube/v3/videos?" +
+    "part=statistics&key=" + apiKey + "&id=" + id;
+
+  https.get(query, function(res) {
+    res.setEncoding('utf8');
+    var responseData = "";
+    res.on('data', function (data) {
+      responseData += data;
+    });
+
+    res.on('error', function () {
+      console.log('error');
+      outRes.json([]);
+    });
+
+    res.on('end', function () {
+      var results = JSON.parse(responseData).items[0];
       outRes.json(results);
     });
   }).end();

@@ -29,7 +29,7 @@ var Playlist = React.createClass({
     var imgUrl = video.snippet.thumbnails.medium.url;
     var artist = video.snippet.title.split(" - ")[0];
     var title = video.snippet.title.split(" - ")[1];
-    var vidId = video.snippet.resourceId.videoId + "?autoplay=1";
+    var vidId = video.snippet.resourceId.videoId;
 
     return (
       <li key={i} className="tile" onClick={this.props.changeVideo.bind(null, vidId)}>
@@ -51,7 +51,7 @@ var Playlist = React.createClass({
       <button onClick={this.displayMore}>More</button> : "";
 
     return (
-      <div className={klass}>
+      <div className={klass} id={this.props.title.replace(" ", "-")}>
         <h3 onClick={this.toggleView}>{this.props.title}</h3>
         <ul>
           {list}

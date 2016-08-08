@@ -8,6 +8,16 @@ var apiUtil = {
       dataType: "json",
       success: callback
     });
+  },
+
+  getVideoStats: function (videoId, callback) {
+    $.ajax({
+      method: "GET",
+      url: "api/videostats",
+      data: { videoId: videoId },
+      dataType: "json",
+      success: callback
+    });
   }
 
 };

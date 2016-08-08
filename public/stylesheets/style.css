@@ -11,7 +11,7 @@ button, article {
   text-decoration: inherit;
   vertical-align: inherit;
   color: inherit;
-  /*background: transparent;*/
+  background: transparent;
 }
 
 body {
@@ -59,6 +59,29 @@ body {
   background-color: #151515;
 }
 
+.navbar {
+  color: orange;
+  height: 85px;
+  background-color: black;
+}
+
+.navbar .logo {
+  width: 450px;
+  margin: auto;
+  text-align: left;
+  font-size: 62px;
+  font-weight: bold;
+
+  background-image: url('../images/tiger.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 120px;
+}
+
+.navbar .logo span:first-child {
+  color: white;
+}
+
 .video-section {
   background-color: black;
 }
@@ -79,6 +102,20 @@ iframe {
   height: 100%;
 }
 
+.video-stats {
+  max-width: 900px;
+  margin: auto;
+}
+
+.video-stats p {
+  display: inline-block;
+  padding: 10px 0;
+  text-align: center;
+  width: 33%;
+  white-space: nowrap;
+  color: #eee;
+}
+
 .playlists {
   padding: 10px 0;
 }
@@ -92,7 +129,7 @@ iframe {
 
 .active ul {
   max-height: 3000px;
-  animation: listslidedown 6s forwards;
+  animation: listslidedown 2s forwards;
   overflow: hidden;
 }
 
@@ -250,6 +287,11 @@ h3:hover:after {
 @media only screen and (max-width: 500px) {
   .playlist ul {
     width: 100%;
+  }
+
+  .navbar .logo {
+    background-image: none;
+    text-align: center;
   }
 }
 
