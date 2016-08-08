@@ -54,9 +54,4 @@ app.use(function(err, req, res, next) {
   });
 });
 
-setInterval(function() {
-    http.get("http://musictiger.herokuapp.com");
-}, 600000);
-
-
 module.exports = app;

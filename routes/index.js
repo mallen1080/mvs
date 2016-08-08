@@ -5,7 +5,7 @@ var apiKey = process.env.API_KEY || require('./apiKey.js').google;
 
 // GET home page
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'New Music' });
+  res.render('index', { title: 'MusicTiger' });
 });
 
 // GET playlist
@@ -62,5 +62,10 @@ router.get('/api/videostats', function(req, res, next) {
   }).end();
 
 });
+
+setInterval(function() {
+    https.get("http://musictiger.herokuapp.com");
+}, 600000);
+
 
 module.exports = router;
