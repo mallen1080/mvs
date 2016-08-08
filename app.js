@@ -55,7 +55,7 @@ app.use(function(err, req, res, next) {
 });
 
 setInterval(function() {
-    http.get("http://tigermusic.herokuapp.com");
+    http.get("http://musictiger.herokuapp.com");
 }, 600000);
 
 
