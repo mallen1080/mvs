@@ -64,7 +64,7 @@ router.get('/api/videostats', function(req, res, next) {
 });
 
 setInterval(function() {
-    https.get("http://musictiger.herokuapp.com");
+    https.get("http://www.musictiger.xyz");
 }, 600000);
 
 
