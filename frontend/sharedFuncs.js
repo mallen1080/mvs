@@ -129,7 +129,7 @@ var dateAgo = function (dateString) {
 
   date = new Date(dateString);
   return monthNames[date.getMonth()] + " " +
-    date.getDay() + ", " + date.getFullYear();
+    date.getDate() + ", " + date.getFullYear();
 };
 
 module.exports = { parseTitleString: parseTitleString, dateAgo: dateAgo };
