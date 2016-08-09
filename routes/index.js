@@ -63,9 +63,4 @@ router.get('/api/videostats', function(req, res, next) {
 
 });
 
-setInterval(function() {
-    https.get("http://www.musictiger.xyz");
-}, 600000);
-
-
 module.exports = router;
