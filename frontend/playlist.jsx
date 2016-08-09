@@ -1,6 +1,6 @@
 var React = require('react');
 var apiUtil = require('./apiUtil');
-var parseTitleString = require('./parseTitleString');
+var parseTitleString = require('./sharedFuncs').parseTitleString;
 
 var Playlist = React.createClass({
 

@@ -41,7 +41,7 @@ router.get('/api/videostats', function(req, res, next) {
   var outRes = res;
   var id = req.query.videoId;
   var query = "https://www.googleapis.com/youtube/v3/videos?" +
-    "part=statistics&key=" + apiKey + "&id=" + id;
+    "part=statistics,snippet&key=" + apiKey + "&id=" + id;
 
   https.get(query, function(res) {
     res.setEncoding('utf8');

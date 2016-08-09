@@ -4,6 +4,7 @@ var Playlist = require('./playlist');
 var SearchBar = require('./searchBar');
 var apiUtil = require('./apiUtil');
 var playlistInfo = require('./playlistInfo');
+var dateAgo = require('./sharedFuncs').dateAgo;
 
 var Main = React.createClass({
 
@@ -20,7 +21,7 @@ var Main = React.createClass({
   },
 
   setVideoStats: function (stats) {
-    this.setState({ videoStats: stats.statistics });
+    this.setState({ videoStats: stats });
   },
 
   commafy: function (num) {
@@ -38,11 +39,16 @@ var Main = React.createClass({
   },
 
   videoStats: function () {
+    var up = parseInt(this.state.videoStats.statistics.likeCount);
+    var down = parseInt(this.state.videoStats.statistics.dislikeCount);
+    var views = this.state.videoStats.statistics.viewCount;
+    var pub = this.state.videoStats.snippet.publishedAt;
+
     return (
       <div className="video-stats">
-        <p>Views: {this.commafy(this.state.videoStats.viewCount)}</p>
-        <p>Likes: {this.commafy(this.state.videoStats.likeCount)}</p>
-        <p>Dislikes: {this.commafy(this.state.videoStats.dislikeCount)}</p>
+        <p>{this.commafy(views)} views</p>
+        <p>{Math.floor(100 * (up / (up + down)))}% likes</p>
+        <p>{dateAgo(pub)}</p>
       </div>
     );
   },

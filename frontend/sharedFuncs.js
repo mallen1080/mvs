@@ -1,6 +1,5 @@
-var TRACK_SEPARATOR = ' - ';
 var parseTitleString = function(string) {
-
+  var TRACK_SEPARATOR = ' - ';
   var artist, title, credits = [];
   var string = string || '';
 
@@ -60,7 +59,6 @@ var parseTitleString = function(string) {
     title = "";
   }
 
-
   // one last pass
   baddies.forEach(function(baddy) {
     title  = title.replace( new RegExp( escapeRegExp(baddy) , 'i') , '').trim();
@@ -110,4 +108,21 @@ var parseTitleString = function(string) {
   return output;
 };
 
-module.exports = parseTitleString;
+var dateAgo = function (dateString) {
+  var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+  var date = new Date(dateString);
+  var today = new Date();
+
+  daysAgo = Math.floor((today - date) / _MS_PER_DAY);
+  if (!daysAgo) { return "today"; }
+  if (daysAgo === 1) { return "1 day ago"; }
+  if (daysAgo < 30) { return daysAgo + " days ago"; }
+  var months = Math.floor(daysAgo / 30);
+  if (months === 1) { return "1 month ago"; }
+  if (daysAgo < 365) { return  months + " months ago"; }
+  var years = Math.floor(daysAgo / 360);
+  if (years === 1) { return "1 year ago"; }
+  return years + " years ago";
+};
+
+module.exports = { parseTitleString: parseTitleString, dateAgo: dateAgo };
