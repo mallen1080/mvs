@@ -1,5 +1,6 @@
 var React = require('react');
 var ApiUtil = require('./apiUtil');
+var parseTitleString = require('./parseTitleString');
 
 var SearchBar = React.createClass({
 
@@ -26,10 +27,22 @@ var SearchBar = React.createClass({
   },
 
   searchResultItems: function () {
+    var that = this;
     return this.state.results.map(function (video, i) {
-      var name = video.snippet.title;
+      var artist = parseTitleString(video.snippet.title).artist;
+      var title = parseTitleString(video.snippet.title).title;
+      var videoId = video.id.videoId;
+      
       return (
-        <li key={i}>{name}</li>
+        <li key={i} onClick={that.props.changeVideo.bind(null, videoId)}>
+          <div className="search-img-container">
+            <img src={video.snippet.thumbnails.default.url} />
+          </div>
+          <div className="search-text">
+            <p>{artist}</p>
+            <p>{title}</p>
+          </div>
+        </li>
       );
     });
   },

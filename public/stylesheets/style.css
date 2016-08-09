@@ -113,14 +113,48 @@ body {
 
 .search-results {
   position: absolute;
-  top: 60px;
+  top: 55px;
   right: 0;
-  background-color: white;
-  width: 500px;
+  background-color: #eee;
+  width: 600px;
   white-space: nowrap;
   max-height: 400px;
   overflow: auto;
   z-index: 1000;
+}
+
+.search-results li {
+  padding: 5px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-results li:hover {
+  background-color: #343434;
+  color: white;
+}
+
+.search-img-container {
+  float: left;
+}
+
+.search-text {
+  max-width: 450px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.search-text p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-text p:first-child {
+  font-weight: bold;
 }
 
 .video-section {

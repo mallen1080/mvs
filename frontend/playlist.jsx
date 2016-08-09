@@ -1,5 +1,6 @@
 var React = require('react');
 var apiUtil = require('./apiUtil');
+var parseTitleString = require('./parseTitleString');
 
 var Playlist = React.createClass({
 
@@ -27,8 +28,8 @@ var Playlist = React.createClass({
 
   playlistItem: function (video, i) {
     var imgUrl = video.snippet.thumbnails.medium.url;
-    var artist = video.snippet.title.split(" - ")[0];
-    var title = video.snippet.title.split(" - ")[1];
+    var artist = parseTitleString(video.snippet.title).artist;
+    var title = parseTitleString(video.snippet.title).title;
     var vidId = video.snippet.resourceId.videoId;
 
     return (

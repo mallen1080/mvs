@@ -13,7 +13,7 @@ var Main = React.createClass({
 
   changeVideo: function (videoId, e) {
     $('.playing').removeClass('playing');
-    $(e.currentTarget).addClass("playing");
+    if (e) { $(e.currentTarget).addClass("playing"); }
     this.setState({ videoId: videoId });
     apiUtil.getVideoStats(videoId, this.setVideoStats);
     $("html, body").animate({ scrollTop: 0 }, 1500);
@@ -55,11 +55,11 @@ var Main = React.createClass({
 
     return (
       <div className="container">
-      
+
         <div className="navbar group">
           <div className="navbar-contents group">
             <div className="logo"><span>Music</span><span>Tiger</span></div>
-            <SearchBar />
+            <SearchBar changeVideo={this.changeVideo}/>
           </div>
         </div>
 
