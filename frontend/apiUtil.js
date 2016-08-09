@@ -18,6 +18,16 @@ var apiUtil = {
       dataType: "json",
       success: callback
     });
+  },
+
+  searchVideos: function (query, callback) {
+    $.ajax({
+      method: "GET",
+      url: "api/search",
+      data: { query: query },
+      dataType: "json",
+      success: callback
+    });
   }
 
 };

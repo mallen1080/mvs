@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Playlist = require('./playlist');
+var SearchBar = require('./searchBar');
 var apiUtil = require('./apiUtil');
 
 var Main = React.createClass({
@@ -44,7 +45,10 @@ var Main = React.createClass({
     return (
       <div className="container">
         <div className="navbar group">
-          <div className="logo"><span>Music</span><span>Tiger</span></div>
+          <div className="navbar-contents group">
+            <div className="logo"><span>Music</span><span>Tiger</span></div>
+            <SearchBar />
+          </div>
         </div>
         <div className="video-section group">
           <div className={videoKlass}>

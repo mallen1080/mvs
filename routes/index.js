@@ -50,11 +50,6 @@ router.get('/api/videostats', function(req, res, next) {
       responseData += data;
     });
 
-    res.on('error', function () {
-      console.log('error');
-      outRes.json([]);
-    });
-
     res.on('end', function () {
       var results = JSON.parse(responseData).items[0];
       outRes.json(results);
@@ -62,5 +57,29 @@ router.get('/api/videostats', function(req, res, next) {
   }).end();
 
 });
+
+// GET video search
+router.get('/api/search', function(req, res, next) {
+  var outRes = res;
+  var q = req.query.query;
+  var query = "https://www.googleapis.com/youtube/v3/search?" +
+    "part=snippet&maxResults=24&type=video&videoCategoryId=10" +
+    "&key=" + apiKey + "&q=" + q;
+
+  https.get(query, function(res) {
+    res.setEncoding('utf8');
+    var responseData = "";
+    res.on('data', function (data) {
+      responseData += data;
+    });
+
+    res.on('end', function () {
+      var results = JSON.parse(responseData);
+      outRes.json(results);
+    });
+  }).end();
+
+});
+
 
 module.exports = router;
