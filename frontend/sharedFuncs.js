@@ -109,20 +109,27 @@ var parseTitleString = function(string) {
 };
 
 var dateAgo = function (dateString) {
-  var _MS_PER_DAY = 1000 * 60 * 60 * 24;
-  var date = new Date(dateString);
-  var today = new Date();
+  // var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+  // var date = new Date(dateString);
+  // var today = new Date();
+  //
+  // daysAgo = Math.floor((today - date) / _MS_PER_DAY);
+  // if (!daysAgo) { return "today"; }
+  // if (daysAgo === 1) { return "1 day ago"; }
+  // if (daysAgo < 30) { return daysAgo + " days ago"; }
+  // var months = Math.floor(daysAgo / 30);
+  // if (months === 1) { return "1 month ago"; }
+  // if (daysAgo < 365) { return  months + " months ago"; }
+  // var years = Math.floor(daysAgo / 360);
+  // if (years === 1) { return "1 year ago"; }
+  // return years + " years ago";
 
-  daysAgo = Math.floor((today - date) / _MS_PER_DAY);
-  if (!daysAgo) { return "today"; }
-  if (daysAgo === 1) { return "1 day ago"; }
-  if (daysAgo < 30) { return daysAgo + " days ago"; }
-  var months = Math.floor(daysAgo / 30);
-  if (months === 1) { return "1 month ago"; }
-  if (daysAgo < 365) { return  months + " months ago"; }
-  var years = Math.floor(daysAgo / 360);
-  if (years === 1) { return "1 year ago"; }
-  return years + " years ago";
+  var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
+    "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+
+  date = new Date(dateString);
+  return monthNames[date.getMonth()] + " " +
+    date.getDay() + ", " + date.getFullYear();
 };
 
 module.exports = { parseTitleString: parseTitleString, dateAgo: dateAgo };
