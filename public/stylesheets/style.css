@@ -121,6 +121,10 @@ body {
   max-height: 400px;
   overflow: auto;
   z-index: 1000;
+
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .search-results li {
