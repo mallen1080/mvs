@@ -251,7 +251,7 @@ iframe {
   cursor: pointer;
 }
 
-.tile:nth-child(3n - 2) {
+.tile:nth-child(4n - 3) {
   margin-left: 10px;
 }
 
@@ -408,11 +408,15 @@ h3:hover:after {
     width: calc(33.33% - 20px);
   }
 
-  .tile:nth-child(3n - 2) {
+  .tile:nth-child(2n - 1) {
     margin-left: 20px;
   }
 
-  .tile:nth-child(2n - 1) {
+  .tile:nth-child(4n - 3) {
+    margin-left: 20px;
+  }
+
+  .tile:nth-child(3n - 2) {
     margin-left: 10px;
   }
 }
@@ -422,6 +426,18 @@ h3:hover:after {
   /*.playlist-container {
     width: calc(100% - 50px);
   }*/
+
+  .tile:nth-child(4n - 3) {
+    margin-left: 20px;
+  }
+
+  .tile:nth-child(3n - 2) {
+    margin-left: 20px;
+  }
+
+  .tile:nth-child(2n - 1) {
+    margin-left: 10px;
+  }
 
   .tile {
     width: calc(50% - 20px);
