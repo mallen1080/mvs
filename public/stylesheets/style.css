@@ -59,6 +59,9 @@ body {
   background-color: #151515;
 }
 
+
+
+/*---------------------NAVBAR--------------------*/
 .navbar {
   color: orange;
   height: 85px;
@@ -161,6 +164,10 @@ body {
   font-weight: bold;
 }
 
+
+
+/*----------------VIDEO SECTION---------------*/
+
 .video-section {
   background-color: black;
 }
@@ -195,6 +202,9 @@ iframe {
   color: #eee;
 }
 
+
+
+/*------------------PLAYLISTS------------------ */
 .playlists {
   padding: 10px 0;
 }
@@ -324,6 +334,9 @@ h3:hover:after {
   border-radius: 3px;
   cursor: pointer;
 }
+
+
+/*-------------------RESPONSIVE CHANGES------------*/
 
 /*window between 769px and 1000px*/
 @media only screen and (max-width: 1000px) {

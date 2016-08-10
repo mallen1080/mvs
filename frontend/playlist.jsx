@@ -54,9 +54,11 @@ var Playlist = React.createClass({
     return (
       <div className={klass} id={this.props.title.replace(" ", "-")}>
         <h3 onClick={this.toggleView}>{this.props.title}</h3>
-        <ul>
-          {list}
-        </ul>
+        <div className="playlist-container">
+          <ul>
+            {list}
+          </ul>
+        </div>
         {more}
       </div>
     );

@@ -41,9 +41,9 @@ var SearchBar = React.createClass({
             <img src={video.snippet.thumbnails.default.url} />
           </div>
           <div className="search-text">
-            <p>{artist}</p>
             <p>{title}</p>
-            <p>{timeAgo}</p>
+            <p>{artist}</p>
+            <p>released: {timeAgo}</p>
           </div>
         </li>
       );
