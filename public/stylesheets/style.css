@@ -344,18 +344,22 @@ h3:hover:after {
 .active button {
   position: absolute;
   padding: 5px 10px;
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.4);
-  top: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to left, rgba(10,10,10,0), rgba(10,10,10,0.8));
+  opacity: 0.6;
   bottom: 0;
-  height: 60%;
-  margin: auto;
+  height: 80%;
   border-radius: 3px;
   cursor: pointer;
   color: white;
 }
 
+.active button:hover {
+  opacity: 1;
+}
+
 .active button.next {
+  background: linear-gradient(to right, rgba(10,10,10,0), rgba(10,10,10,1));
   right: 0;
 }
 
