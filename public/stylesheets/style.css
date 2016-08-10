@@ -341,20 +341,21 @@ h3:hover:after {
   width: calc(100% - 250px);
 }
 
-.playlist button {
+.active button {
   position: absolute;
   padding: 5px 10px;
   background-color: black;
-  opacity: 0.9;
+  background-color: rgba(0, 0, 0, 0.4);
   top: 0;
   bottom: 0;
   height: 60%;
   margin: auto;
   border-radius: 3px;
   cursor: pointer;
+  color: white;
 }
 
-.playlist button.next {
+.active button.next {
   right: 0;
 }
 
