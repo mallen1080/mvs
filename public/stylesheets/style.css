@@ -341,7 +341,12 @@ h3:hover:after {
   width: calc(100% - 250px);
 }
 
+.playlist button {
+  display: none;
+}
+
 .active button {
+  display: block;
   position: absolute;
   padding: 5px 10px;
   background-color: rgba(0, 0, 0, 0.2);
