@@ -209,17 +209,32 @@ iframe {
   padding: 10px 0;
 }
 
-.playlist ul {
+.playlist-container {
   max-height: 0;
-  width: calc(100% - 300px);
-  max-width: 810px;
+  /*width: calc(100% - 300px);*/
+  width: 100%;
+  /*max-width: 810px;*/
   margin: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
+.playlist {
+  position: relative;
+}
+
+.playlist ul {
+  max-height: 0;
+  width: 100%;
+  flex: 0 0 100%;
+  /*max-width: 810px;*/
+}
+
+.playlist-container,
 .active ul {
-  max-height: 3000px;
   animation: listslidedown 2s forwards;
-  overflow: hidden;
 }
 
 .active {
@@ -229,8 +244,8 @@ iframe {
 .tile {
   display: inline-block;
   margin: 20px 0 0 20px;
-  width: calc(33.33% - 20px);
-  max-width: 250px;
+  width: calc(25% - 20px);
+  /*max-width: 250px;*/
   vertical-align: top;
   text-align: center;
   cursor: pointer;
@@ -327,12 +342,20 @@ h3:hover:after {
 }
 
 .playlist button {
-  display: block;
+  position: absolute;
   padding: 5px 10px;
-  background-color: #ccc;
-  margin: 10px auto;
+  background-color: black;
+  opacity: 0.9;
+  top: 0;
+  bottom: 0;
+  height: 60%;
+  margin: auto;
   border-radius: 3px;
   cursor: pointer;
+}
+
+.playlist button.next {
+  right: 0;
 }
 
 
@@ -341,9 +364,9 @@ h3:hover:after {
 /*window between 769px and 1000px*/
 @media only screen and (max-width: 1000px) {
 
-  .playlist ul {
+  /*.playlist-container {
     width: calc(100% - 150px);
-  }
+  }*/
 
   .video-container {
     animation: slidedown 2s forwards;
@@ -367,12 +390,12 @@ h3:hover:after {
     margin: auto;
   }
 
-  .playlist ul {
+  /*.playlist-container {
     width: calc(100% - 228px);
-  }
+  }*/
 
   .tile {
-    width: calc(50% - 20px);
+    width: calc(33.33% - 20px);
   }
 
   .tile:nth-child(3n - 2) {
@@ -386,16 +409,20 @@ h3:hover:after {
 
 /*window between 501px and 600px*/
 @media only screen and (max-width: 600px) {
-  .playlist ul {
+  /*.playlist-container {
     width: calc(100% - 50px);
+  }*/
+
+  .tile {
+    width: calc(50% - 20px);
   }
 }
 
 /*window smaller than 501px*/
 @media only screen and (max-width: 500px) {
-  .playlist ul {
+  /*.playlist-container {
     width: 100%;
-  }
+  }*/
 
   .navbar .logo {
     background-image: none;
