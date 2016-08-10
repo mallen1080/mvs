@@ -24,7 +24,6 @@ var Playlist = React.createClass({
     } else if (width <= 600 && this.state.display !== 4){
       this.setState({ display: 4 });
     }
-
   },
 
   receivePlaylist: function (playlist) {
@@ -36,13 +35,8 @@ var Playlist = React.createClass({
     this.setState({ display: display });
   },
 
-  displayMore: function () {
-    this.setState({ display: this.state.display + 6 });
-  },
-
-  scroll: function (direction, e) {
+  scrollClick: function (direction, e) {
     var container = $(e.target).prev();
-
 
     if (direction === "right") {
       var next = Math.floor((container.scrollLeft() + container.width()) / container.width()) * container.width();
@@ -51,6 +45,22 @@ var Playlist = React.createClass({
       container = container.prev();
       var prev = Math.ceil((container.scrollLeft() - container.width()) / container.width()) * container.width();
       container.animate({scrollLeft: prev}, 400);
+    }
+  },
+
+  onScroll: function (e) {
+    var container = $(e.target);
+    var next = container.parent().find(".next");
+    var prev = container.parent().find(".prev");
+    var pos = container.scrollLeft();
+
+    if (pos < 20) { prev.addClass("hide"); }
+    if (pos >= 20 && pos < (2 * container.width()) - 20) {
+      prev.removeClass("hide");
+      next.removeClass("hide");
+    }
+    if (pos >= (2 * container.width()) - 20) {
+      next.addClass("hide");
     }
   },
 
@@ -90,21 +100,18 @@ var Playlist = React.createClass({
     var list1 = this.state.playlist.slice(0,this.state.display).map(this.playlistItem);
     var list2 = this.state.playlist.slice(8,16).map(this.playlistItem);
     var list3 = this.state.playlist.slice(16,24).map(this.playlistItem);
-
     var klass = this.state.display ? "playlist active" : "playlist";
-    var more = this.state.display && this.state.display < 24 ?
-      <button onClick={this.displayMore}>More</button> : "";
 
     return (
       <div className={klass} id={this.props.title.replace(" ", "-")}>
         <h3 onClick={this.toggleView}>{this.props.title}</h3>
-        <div className="playlist-container group">
+        <div onScroll={this.onScroll} className="playlist-container group">
 
           {this.playlistGroup()}
 
         </div>
-        <button className="next" onClick={this.scroll.bind(null, "right")}>Next</button>
-        <button onClick={this.scroll.bind(null, "left")}>Prev</button>
+        <button className="next" onClick={this.scrollClick.bind(null, "right")}>Next</button>
+        <button className="prev hide" onClick={this.scrollClick.bind(null, "left")}>Prev</button>
       </div>
     );
   }
