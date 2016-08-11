@@ -111,8 +111,8 @@ var Playlist = React.createClass({
           {this.playlistGroup()}
 
         </div>
-        <button className="next" onClick={this.scrollClick.bind(null, "right")}>Next</button>
-        <button className="prev hide" onClick={this.scrollClick.bind(null, "left")}>Prev</button>
+        <button className="next" onClick={this.scrollClick.bind(null, "right")}>{">"}</button>
+        <button className="prev hide" onClick={this.scrollClick.bind(null, "left")}>{"<"}</button>
       </div>
     );
   }

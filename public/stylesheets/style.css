@@ -356,6 +356,8 @@ h3:hover:after {
   height: 80%;
   border-radius: 3px;
   cursor: pointer;
+  font-size: 68px;
+  font-weight: bold;
   color: white;
 }
 
