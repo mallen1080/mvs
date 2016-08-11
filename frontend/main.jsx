@@ -80,6 +80,7 @@ var Main = React.createClass({
           {this.playlists()}
         </div>
 
+        <div className="footer"></div>
       </div>
     );
   }

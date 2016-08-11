@@ -16,23 +16,24 @@ router.get('/api/playlist', function(req, res, next) {
     "part=snippet&key=" + apiKey + "&maxResults=24" +
     "&playlistId=" + playlist;
 
-  https.get(query, function(res) {
+  var request = https.get(query, function(res) {
     res.setEncoding('utf8');
     var responseData = "";
     res.on('data', function (data) {
       responseData += data;
     });
 
-    res.on('error', function () {
-      console.log('error');
-      outRes.json([]);
-    });
-
     res.on('end', function () {
       var results = JSON.parse(responseData).items;
       outRes.json(results);
     });
-  }).end();
+  });
+
+  request.on('error', function () {
+    console.log('error');
+  });
+
+  request.end();
 
 });
 

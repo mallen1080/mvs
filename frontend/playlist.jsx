@@ -5,7 +5,12 @@ var parseTitleString = require('./sharedFuncs').parseTitleString;
 var Playlist = React.createClass({
 
   getInitialState: function () {
-    var display = this.props.display ? 8 : 0;
+    var width = $(window).width();
+    var display = 8;
+    if (width < 769) { display = 6; }
+    if (width < 601) { display = 4; }
+    if (!this.props.display) { display = 0; }
+    
     return { playlist: [], display: display };
   },
 

@@ -10,7 +10,7 @@ var parseTitleString = function(string) {
   // TODO: load from datafile
   var baddies = ['[dubstep]', '[electro]', '[edm]', '[house music]',
     '[glitch hop]', '[video]', '[official video]', '(official video)',
-    '(official music video)', '(lyrics)',
+    '(official music video)', '(lyrics)', '(official)',
     '[ official video ]', '[official music video]', '[free download]',
     '[free dl]', '( 1080p )', '(with lyrics)', '(high res / official video)',
     '(music video)', '[music video]', '[hd]', '(hd)', '[hq]', '(hq)',

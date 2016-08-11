@@ -221,7 +221,7 @@ iframe {
   flex-flow: row nowrap;
 }
 
-.playlist-container::-webkit-scrollbar { 
+.playlist-container::-webkit-scrollbar {
     display: none;
 }
 
@@ -372,6 +372,14 @@ h3:hover:after {
 .active button.next {
   background: linear-gradient(to right, rgba(10,10,10,0), rgba(10,10,10,1));
   right: 0;
+}
+
+
+/*-------------------------FOOTER-------------*/
+
+.footer {
+  height: 50px;
+  background-color: #151515;
 }
 
 
