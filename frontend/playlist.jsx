@@ -53,13 +53,14 @@ var Playlist = React.createClass({
     var next = container.parent().find(".next");
     var prev = container.parent().find(".prev");
     var pos = container.scrollLeft();
+    var numLists = container.children().length - 1;
 
     if (pos < 20) { prev.addClass("hide"); }
-    if (pos >= 20 && pos < (2 * container.width()) - 20) {
+    if (pos >= 20 && pos < (numLists * container.width()) - 20) {
       prev.removeClass("hide");
       next.removeClass("hide");
     }
-    if (pos >= (2 * container.width()) - 20) {
+    if (pos >= (numLists * container.width()) - 20) {
       next.addClass("hide");
     }
   },
