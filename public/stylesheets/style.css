@@ -221,6 +221,10 @@ iframe {
   flex-flow: row nowrap;
 }
 
+.playlist-container::-webkit-scrollbar { 
+    display: none;
+}
+
 .playlist {
   position: relative;
 }

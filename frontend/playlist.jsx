@@ -98,9 +98,6 @@ var Playlist = React.createClass({
   },
 
   render: function () {
-    // var list1 = this.state.playlist.slice(0,this.state.display).map(this.playlistItem);
-    // var list2 = this.state.playlist.slice(8,16).map(this.playlistItem);
-    // var list3 = this.state.playlist.slice(16,24).map(this.playlistItem);
     var klass = this.state.display ? "playlist active" : "playlist";
 
     return (
