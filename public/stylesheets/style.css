@@ -16,6 +16,8 @@ button, article {
 
 body {
   font-family: 'Comfortaa', cursive;
+  height: 100%;
+  background-color: #151515;
 }
 
 .group:after {
@@ -45,20 +47,6 @@ body {
     padding-bottom: 505px;
   }
 }
-
-@keyframes listslidedown {
-  from {
-    max-height: 0;
-  }
-  to {
-    max-height: 3000px;
-  }
-}
-
-.container {
-  background-color: #151515;
-}
-
 
 
 /*---------------------NAVBAR--------------------*/
@@ -236,7 +224,6 @@ iframe {
 .active ul {
   max-height: 800px;
   transition: max-height 0.5s ease-out;
-  /*animation: listslidedown 2s forwards;*/
 }
 
 .active {
@@ -376,7 +363,6 @@ h3:hover:after {
 
 .footer {
   height: 50px;
-  background-color: #151515;
 }
 
 
