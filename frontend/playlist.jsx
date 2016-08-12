@@ -7,7 +7,9 @@ var Playlist = React.createClass({
   getInitialState: function () {
     var showCount = this.getShowCount();
 
-    return { playlist: [], showCount: showCount, display: this.props.display };
+    return { playlist: [],
+            showCount: showCount,
+            display: this.props.display };
   },
 
   componentDidMount: function () {
@@ -23,19 +25,9 @@ var Playlist = React.createClass({
   },
 
   handleResize: function () {
-    // if (!this.state.display) { return; }
-    // var width = $(window).width();
-    // if (width > 768 && this.state.display !== 8) {
-    //   this.setState({ display: 8 });
-    // } else if (width <= 768 && width > 600 && this.state.display !== 6) {
-    //   this.setState({ display: 6 });
-    // } else if (width <= 600 && this.state.display !== 4){
-    //   this.setState({ display: 4 });
-    // }
     var showCount = this.getShowCount();
-    if (showCount !== this.state.showCount) {
+    if (showCount === this.state.showCount) { return; }
       this.setState({showCount: showCount});
-    }
   },
 
   receivePlaylist: function (playlist) {
@@ -43,7 +35,6 @@ var Playlist = React.createClass({
   },
 
   toggleView: function () {
-    // var display = this.state.display ? 0 : 8;
     var display = !this.state.display;
     this.setState({ display: display });
   },
@@ -101,9 +92,9 @@ var Playlist = React.createClass({
     var playlist = this.state.playlist;
     var playlistGroups = [];
 
-      for (var i = 0; i < 24; i += this.state.showCount) {
-        playlistGroups.push(playlist.slice(i, i + this.state.showCount));
-      }
+    for (var i = 0; i < 24; i += this.state.showCount) {
+      playlistGroups.push(playlist.slice(i, i + this.state.showCount));
+    }
 
     return playlistGroups.map(function (group, i) {
       return <ul key={i}>{group.map(this.playlistItem)}</ul>;
@@ -112,14 +103,13 @@ var Playlist = React.createClass({
 
   render: function () {
     var klass = this.state.display ? "playlist active" : "playlist";
-    var listGroup = this.playlistGroup().length ? this.playlistGroup() : <ul></ul>;
 
     return (
       <div className={klass} id={this.props.title.replace(" ", "-")}>
         <h3 onClick={this.toggleView}>{this.props.title}</h3>
         <div onScroll={this.onScroll} className="playlist-container group">
 
-          {listGroup}
+          {this.playlistGroup()}
 
         </div>
         <button className="next" onClick={this.scrollClick.bind(null, "right")}>
