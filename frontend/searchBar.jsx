@@ -52,7 +52,6 @@ var SearchBar = React.createClass({
 
   render: function () {
 
-
     return (
       <div className="search-box">
         <input type="text" onChange={this.searchVideos} placeholder="search videos..."/>

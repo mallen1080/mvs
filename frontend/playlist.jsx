@@ -5,13 +5,9 @@ var parseTitleString = require('./sharedFuncs').parseTitleString;
 var Playlist = React.createClass({
 
   getInitialState: function () {
-    var width = $(window).width();
-    var display = 8;
-    if (width < 769) { display = 6; }
-    if (width < 601) { display = 4; }
-    if (!this.props.display) { display = 0; }
-    
-    return { playlist: [], display: display };
+    var showCount = this.getShowCount();
+
+    return { playlist: [], showCount: showCount, display: this.props.display };
   },
 
   componentDidMount: function () {
@@ -19,15 +15,26 @@ var Playlist = React.createClass({
     $(window).resize(this.handleResize);
   },
 
-  handleResize: function () {
-    if (!this.state.display) { return; }
+  getShowCount: function () {
     var width = $(window).width();
-    if (width > 768 && this.state.display !== 8) {
-      this.setState({ display: 8 });
-    } else if (width <= 768 && width > 600 && this.state.display !== 6) {
-      this.setState({ display: 6 });
-    } else if (width <= 600 && this.state.display !== 4){
-      this.setState({ display: 4 });
+    if (width > 768) { return 8; }
+    if (width > 600) { return 6; }
+    return 4;
+  },
+
+  handleResize: function () {
+    // if (!this.state.display) { return; }
+    // var width = $(window).width();
+    // if (width > 768 && this.state.display !== 8) {
+    //   this.setState({ display: 8 });
+    // } else if (width <= 768 && width > 600 && this.state.display !== 6) {
+    //   this.setState({ display: 6 });
+    // } else if (width <= 600 && this.state.display !== 4){
+    //   this.setState({ display: 4 });
+    // }
+    var showCount = this.getShowCount();
+    if (showCount !== this.state.showCount) {
+      this.setState({showCount: showCount});
     }
   },
 
@@ -36,7 +43,8 @@ var Playlist = React.createClass({
   },
 
   toggleView: function () {
-    var display = this.state.display ? 0 : 8;
+    // var display = this.state.display ? 0 : 8;
+    var display = !this.state.display;
     this.setState({ display: display });
   },
 
@@ -92,11 +100,11 @@ var Playlist = React.createClass({
   playlistGroup: function () {
     var playlist = this.state.playlist;
     var playlistGroups = [];
-    if (this.state.display) {
-      for (var i = 0; i < 24; i+= this.state.display) {
-        playlistGroups.push(playlist.slice(i, i + this.state.display));
+
+      for (var i = 0; i < 24; i += this.state.showCount) {
+        playlistGroups.push(playlist.slice(i, i + this.state.showCount));
       }
-    }
+
     return playlistGroups.map(function (group, i) {
       return <ul key={i}>{group.map(this.playlistItem)}</ul>;
     }.bind(this));
@@ -104,13 +112,14 @@ var Playlist = React.createClass({
 
   render: function () {
     var klass = this.state.display ? "playlist active" : "playlist";
+    var listGroup = this.playlistGroup().length ? this.playlistGroup() : <ul></ul>;
 
     return (
       <div className={klass} id={this.props.title.replace(" ", "-")}>
         <h3 onClick={this.toggleView}>{this.props.title}</h3>
         <div onScroll={this.onScroll} className="playlist-container group">
 
-          {this.playlistGroup()}
+          {listGroup}
 
         </div>
         <button className="next" onClick={this.scrollClick.bind(null, "right")}>{">"}</button>
