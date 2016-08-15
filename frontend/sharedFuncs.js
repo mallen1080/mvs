@@ -1,13 +1,12 @@
 var parseTitleString = function(string) {
   var TRACK_SEPARATOR = ' - ';
   var artist, title, credits = [];
-  var string = string || '';
+  string = string || '';
 
   function escapeRegExp(str) {
     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
   }
 
-  // TODO: load from datafile
   var baddies = ['[dubstep]', '[electro]', '[edm]', '[house music]',
     '[glitch hop]', '[video]', '[official video]', '(official video)',
     '(official music video)', '(lyrics)', '(official)',
@@ -18,7 +17,8 @@ var parseTitleString = function(string) {
     '[monstercat release]', '[monstercat freebie]', '[monstercat]',
     '[edm.com premeire]', '[edm.com exclusive]', '[enm release]',
     '[free download!]', '[monstercat free release]'];
-  baddies.forEach(function(token) {
+
+  baddies.forEach(function  (token) {
     string = string.replace(token + ' - ', '').trim();
     string = string.replace(token.toUpperCase() + ' - ', '').trim();
     string = string.replace(token.toLowerCase() + ' - ', '').trim();
@@ -27,6 +27,7 @@ var parseTitleString = function(string) {
     string = string.replace(token.toUpperCase(), '').trim();
     string = string.replace(token.toLowerCase(), '').trim();
   });
+
   if (DEBUG) console.log('next string: ' +string );
   var parts = [string];
   if (string.indexOf(" - ") !== - 1) {
@@ -94,7 +95,7 @@ var parseTitleString = function(string) {
 
   var creditMap = {};
   credits.forEach(function(credit) {
-    if (credit !== title) { // temp., until we find out why title is in credits
+    if (credit !== title) {
       creditMap[ credit ] = credit;
     }
   });
@@ -108,22 +109,26 @@ var parseTitleString = function(string) {
   return output;
 };
 
-var dateAgo = function (dateString) {
-  // var _MS_PER_DAY = 1000 * 60 * 60 * 24;
-  // var date = new Date(dateString);
-  // var today = new Date();
-  //
-  // daysAgo = Math.floor((today - date) / _MS_PER_DAY);
-  // if (!daysAgo) { return "today"; }
-  // if (daysAgo === 1) { return "1 day ago"; }
-  // if (daysAgo < 30) { return daysAgo + " days ago"; }
-  // var months = Math.floor(daysAgo / 30);
-  // if (months === 1) { return "1 month ago"; }
-  // if (daysAgo < 365) { return  months + " months ago"; }
-  // var years = Math.floor(daysAgo / 360);
-  // if (years === 1) { return "1 year ago"; }
-  // return years + " years ago";
 
+var dateAgo = function (dateString) {
+  var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+  var date = new Date(dateString);
+  var today = new Date();
+
+  daysAgo = Math.floor((today - date) / _MS_PER_DAY);
+  if (!daysAgo) { return "today"; }
+  if (daysAgo === 1) { return "1 day ago"; }
+  if (daysAgo < 30) { return daysAgo + " days ago"; }
+  var months = Math.floor(daysAgo / 30);
+  if (months === 1) { return "1 month ago"; }
+  if (daysAgo < 365) { return  months + " months ago"; }
+  var years = Math.floor(daysAgo / 360);
+  if (years === 1) { return "1 year ago"; }
+  return years + " years ago";
+};
+
+
+var parseDate = function (dateString) {
   var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
     "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
@@ -132,4 +137,4 @@ var dateAgo = function (dateString) {
     date.getDate() + ", " + date.getFullYear();
 };
 
-module.exports = { parseTitleString: parseTitleString, dateAgo: dateAgo };
+module.exports = { parseTitleString: parseTitleString, dateParse: parseDate };

@@ -1,7 +1,7 @@
 var React = require('react');
 var ApiUtil = require('./apiUtil');
 var parseTitleString = require('./sharedFuncs').parseTitleString;
-var dateAgo = require('./sharedFuncs').dateAgo;
+var dateParse = require('./sharedFuncs').dateParse;
 
 var SearchBar = React.createClass({
 
@@ -32,7 +32,7 @@ var SearchBar = React.createClass({
     return this.state.results.map(function (video, i) {
       var artist = parseTitleString(video.snippet.title).artist;
       var title = parseTitleString(video.snippet.title).title;
-      var timeAgo = dateAgo(video.snippet.publishedAt);
+      var timeAgo = dateParse(video.snippet.publishedAt);
       var videoId = video.id.videoId;
 
       return (
