@@ -371,10 +371,6 @@ h3:hover:after {
 /*window between 769px and 1000px*/
 @media only screen and (max-width: 1000px) {
 
-  /*.playlist-container {
-    width: calc(100% - 150px);
-  }*/
-
   .video-container {
     animation: slidedown 2s forwards;
   }
@@ -397,10 +393,6 @@ h3:hover:after {
     margin: auto;
   }
 
-  /*.playlist-container {
-    width: calc(100% - 228px);
-  }*/
-
   .tile {
     width: calc(33.33% - 20px);
   }
@@ -420,9 +412,6 @@ h3:hover:after {
 
 /*window between 501px and 600px*/
 @media only screen and (max-width: 600px) {
-  /*.playlist-container {
-    width: calc(100% - 50px);
-  }*/
 
   .tile:nth-child(4n - 3) {
     margin-left: 20px;
@@ -443,9 +432,6 @@ h3:hover:after {
 
 /*window smaller than 501px*/
 @media only screen and (max-width: 500px) {
-  /*.playlist-container {
-    width: 100%;
-  }*/
 
   .navbar {
     height: auto;
@@ -458,9 +444,17 @@ h3:hover:after {
     font-size: 42px;
   }
 
+  .video-stats p {
+    display: none;
+  }
+
   .playlist h3 {
     font-size: 24px;
     width: 100%;
+  }
+
+  .active button {
+    font-size: 42px;
   }
 }
 
