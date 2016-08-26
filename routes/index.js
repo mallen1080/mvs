@@ -13,7 +13,8 @@ router.get('/api/playlist', function(req, res, next) {
   var outRes = res;
   var playlist = req.query.playlist;
   var query = "https://www.googleapis.com/youtube/v3/playlistItems?" +
-    "part=snippet&key=" + apiKey + "&maxResults=24" +
+    "part=snippet&key=" + apiKey +
+    "&maxResults=24" +
     "&playlistId=" + playlist;
 
   var request = https.get(query, function(res) {
@@ -29,8 +30,8 @@ router.get('/api/playlist', function(req, res, next) {
     });
   });
 
-  request.on('error', function () {
-    console.log('error');
+  request.on('error', function (e) {
+    console.error(e);
   });
 
   request.end();
