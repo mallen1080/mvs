@@ -40,14 +40,18 @@ var Playlist = React.createClass({
   },
 
   scrollClick: function (direction, e) {
-    var container = $(e.target).prev();
+    var container = $(e.target).prev(), w;
 
     if (direction === "right") {
-      var next = Math.floor((container.scrollLeft() + container.width()) / container.width()) * container.width();
+      w = container.width();
+      var next = Math.floor((container.scrollLeft() + w) / w) * w;
+
       container.animate({scrollLeft: next}, 400);
     } else {
       container = container.prev();
-      var prev = Math.ceil((container.scrollLeft() - container.width()) / container.width()) * container.width();
+      w = container.width();
+      var prev = Math.ceil((container.scrollLeft() - w) / w) * w;
+      
       container.animate({scrollLeft: prev}, 400);
     }
   },
