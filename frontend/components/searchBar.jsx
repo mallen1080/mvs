@@ -1,7 +1,7 @@
 var React = require('react');
-var ApiUtil = require('./apiUtil');
-var parseTitleString = require('./sharedFuncs').parseTitleString;
-var dateParse = require('./sharedFuncs').dateParse;
+var ApiUtil = require('../util/apiUtil');
+var parseTitleString = require('../sharedFuncs').parseTitleString;
+var dateParse = require('../sharedFuncs').dateParse;
 
 var SearchBar = React.createClass({
 

@@ -179,15 +179,15 @@ iframe {
 .video-stats {
   max-width: 900px;
   margin: auto;
+  color: #eee;
+  text-align: center;
 }
 
 .video-stats p {
   display: inline-block;
   padding: 10px 0;
-  text-align: center;
   width: 33%;
   white-space: nowrap;
-  color: #eee;
 }
 
 

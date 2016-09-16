@@ -1,6 +1,6 @@
 var React = require('react');
-var apiUtil = require('./apiUtil');
-var parseTitleString = require('./sharedFuncs').parseTitleString;
+var PlaylistItem = require('./playlistItem');
+var apiUtil = require('../util/apiUtil');
 
 var Playlist = React.createClass({
 
@@ -51,7 +51,7 @@ var Playlist = React.createClass({
       container = container.prev();
       w = container.width();
       var prev = Math.ceil((container.scrollLeft() - w) / w) * w;
-      
+
       container.animate({scrollLeft: prev}, 400);
     }
   },
@@ -73,25 +73,6 @@ var Playlist = React.createClass({
     }
   },
 
-  playlistItem: function (video, i) {
-    var imgUrl = video.snippet.thumbnails.medium.url;
-    var artist = parseTitleString(video.snippet.title).artist;
-    var title = parseTitleString(video.snippet.title).title;
-    var vidId = video.snippet.resourceId.videoId;
-
-    return (
-      <li key={i} className="tile" onClick={this.props.changeVideo.bind(null, vidId)}>
-        <div className="video-img-cont">
-          <img src={imgUrl} />
-        </div>
-        <div className="video-text">
-          <p className="video-artist">{artist}</p>
-          <p className="video-title">{title}</p>
-        </div>
-      </li>
-    );
-  },
-
   playlistGroup: function () {
     var playlist = this.state.playlist;
     var playlistGroups = [];
@@ -101,7 +82,9 @@ var Playlist = React.createClass({
     }
 
     return playlistGroups.map(function (group, i) {
-      return <ul key={i}>{group.map(this.playlistItem)}</ul>;
+      return <ul key={i}>{group.map(function (video, j) {
+        return <PlaylistItem video={video} key={j} />;
+      })}</ul>;
     }.bind(this));
   },
 

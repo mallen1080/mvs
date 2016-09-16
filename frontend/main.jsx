@@ -1,8 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Playlist = require('./playlist');
-var SearchBar = require('./searchBar');
-var apiUtil = require('./apiUtil');
+var Playlist = require('./components/playlist');
+var SearchBar = require('./components/searchBar');
+var VideoStore = require('./stores/videoStore');
+var apiUtil = require('./util/apiUtil');
 var playlistInfo = require('./playlistInfo');
 var dateParse = require('./sharedFuncs').dateParse;
 
@@ -12,11 +13,22 @@ var Main = React.createClass({
     return { videoId: "", videoStats: null };
   },
 
+  componentDidMount: function () {
+    this.changeCurrentVideo = VideoStore.addListener(this.changeVideo);
+  },
+
+  componentWillUnmount: function () {
+    this.changeCurrentVideo.remove();
+  },
+
   changeVideo: function (videoId, e) {
+    var vidId = VideoStore.currentVideo();
+    var cpli = VideoStore.currentPlaylistItem();
+
     $('.playing').removeClass('playing');
-    if (e) { $(e.currentTarget).addClass("playing"); }
-    this.setState({ videoId: videoId });
-    apiUtil.getVideoStats(videoId, this.setVideoStats);
+    if (cpli) { $(cpli).addClass("playing"); }
+    this.setState({ videoId: vidId });
+    apiUtil.getVideoStats(vidId, this.setVideoStats);
     $("html, body").animate({ scrollTop: 0 }, 1500);
   },
 
