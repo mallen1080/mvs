@@ -137,4 +137,24 @@ var parseDate = function (dateString) {
     date.getDate() + ", " + date.getFullYear();
 };
 
+
+// var player;
+// window.onYouTubeIframeAPIReady = function () {
+//   player = new YT.Player('player', {
+//     events: {
+//       'onReady': onPlayerReady,
+//       'onStateChange': onPlayerStateChange
+//     }
+//   });
+// };
+//
+// window.onPlayerReady = function () {
+//   console.log("player ready");
+// };
+//
+// window.onPlayerStateChange = function () {
+//   console.log("state changed");
+// };
+
+
 module.exports = { parseTitleString: parseTitleString, dateParse: parseDate };

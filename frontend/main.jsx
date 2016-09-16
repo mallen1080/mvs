@@ -67,7 +67,7 @@ var Main = React.createClass({
   },
 
   render: function () {
-    var link = "https://www.youtube.com/embed/" + this.state.videoId + "?autoplay=1&showinfo=0";
+    var link = "https://www.youtube.com/embed/" + this.state.videoId + "?autoplay=1&showinfo=0&enablejsapi=1";
     var videoKlass = this.state.videoId ? "video-container" : "hide";
     var navbarKlass = this.state.videoId ? "hide" : "navbar";
     var videoStats = this.state.videoStats ? this.videoStats() : <div></div>;
@@ -84,7 +84,7 @@ var Main = React.createClass({
 
         <div className="video-section group">
           <div className={videoKlass}>
-            <iframe src={link} frameBorder="0" allowFullScreen></iframe>
+            <iframe id="player" src={link} frameBorder="0" allowFullScreen></iframe>
           </div>
           {videoStats}
         </div>
