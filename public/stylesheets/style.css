@@ -217,8 +217,12 @@ iframe {
 }
 
 .video-queue li p {
+  width: calc(100% - 15px);
   display: inline-block;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playlist-add:hover {
@@ -230,8 +234,6 @@ iframe {
   float: right;
   cursor: pointer;
 }
-
-
 
 /*------------------PLAYLISTS------------------ */
 .playlists {
