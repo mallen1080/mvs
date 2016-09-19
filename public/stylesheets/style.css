@@ -221,7 +221,7 @@ iframe {
   cursor: pointer;
 }
 
-.video-queue li p:hover {
+.playlist-add:hover {
   text-decoration: underline;
 }
 

@@ -1,5 +1,6 @@
 var React = require('react');
 var ApiUtil = require('../util/apiUtil');
+var videoActions = require('../actions/videoActions');
 var parseTitleString = require('../sharedFuncs').parseTitleString;
 var dateParse = require('../sharedFuncs').dateParse;
 
@@ -10,7 +11,8 @@ var SearchBar = React.createClass({
   },
 
   componentDidMount: function () {
-    $(document).click(function () {
+    $(document).click(function (e) {
+      if (e.target.className === "playlist-add") { return; }
       this.setState({ results: [] });
     }.bind(this));
   },
@@ -34,9 +36,10 @@ var SearchBar = React.createClass({
       var title = parseTitleString(video.snippet.title).title;
       var timeAgo = dateParse(video.snippet.publishedAt);
       var videoId = video.id.videoId;
+      var queueVideo = { title: video.snippet.title, videoId: videoId };
 
       return (
-        <li key={i} onClick={that.props.changeVideo.bind(null, videoId)}>
+        <li key={i} onClick={videoActions.changeVideo.bind(null, videoId)}>
           <div className="search-img-container">
             <img src={video.snippet.thumbnails.default.url} />
           </div>
@@ -44,6 +47,8 @@ var SearchBar = React.createClass({
             <p>{title}</p>
             <p>{artist}</p>
             <p>released: {timeAgo}</p>
+            <p className="playlist-add"
+              onClick={videoActions.addVideoToQueue.bind(null, queueVideo)}>+ Playlist</p>
           </div>
         </li>
       );
