@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Playlist = require('./components/playlist');
+var VideoQueue = require('./components/videoQueue');
 var SearchBar = require('./components/searchBar');
 var VideoStore = require('./stores/videoStore');
 var apiUtil = require('./util/apiUtil');
@@ -25,6 +26,7 @@ var Main = React.createClass({
     var vidId = VideoStore.currentVideo();
     var cpli = VideoStore.currentPlaylistItem();
 
+    if (vidId === this.state.videoId) { return; }
     $('.playing').removeClass('playing');
     if (cpli) { $(cpli).addClass("playing"); }
     this.setState({ videoId: vidId });
@@ -45,7 +47,6 @@ var Main = React.createClass({
       return <Playlist display={playlist.display}
         playlistId={playlist.playlistId}
         title={playlist.title}
-        changeVideo={this.changeVideo}
         key={i}/>;
     }.bind(this));
   },
@@ -88,6 +89,8 @@ var Main = React.createClass({
           </div>
           {videoStats}
         </div>
+
+        <VideoQueue />
 
         <div className="playlists">
           {this.playlists()}

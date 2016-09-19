@@ -12,6 +12,7 @@ button, article {
   vertical-align: inherit;
   color: inherit;
   background: transparent;
+  list-style: none;
 }
 
 body {
@@ -192,6 +193,46 @@ iframe {
 
 
 
+/*------------------VIDEO QUEUE--------------- */
+
+.video-queue {
+  width: 100%;
+  margin: auto;
+  max-width: 600px;
+  color: #eee;
+}
+
+.video-queue h2 {
+  text-align: center;
+  font-size: 34px;
+  margin: auto;
+  padding-top: 20px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.video-queue li {
+  margin: 7px 0;
+  padding: 0 7px;
+}
+
+.video-queue li p {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.video-queue li p:hover {
+  text-decoration: underline;
+}
+
+.video-queue li span {
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+}
+
+
+
 /*------------------PLAYLISTS------------------ */
 .playlists {
   padding: 10px 0;
@@ -247,8 +288,11 @@ iframe {
   opacity: 0.7;
 }
 
-.playing .video-img-cont {
+.video-img-cont {
   position: relative;
+}
+
+.playing .video-img-cont {
   cursor: default;
 }
 
@@ -276,6 +320,26 @@ iframe {
   box-sizing: border-box;
   width: 100%;
   height: auto;
+}
+
+.video-img-cont span {
+  display: none;
+  position: absolute;
+  color: white;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+  background-color: #151515;
+  cursor: pointer;
+  border-top-left-radius: 4px;
+}
+
+.video-img-cont:hover span {
+  display: inline;
+}
+
+.video-img-cont span:hover {
+  text-decoration: underline;
 }
 
 .video-text {
