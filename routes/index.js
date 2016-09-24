@@ -5,6 +5,8 @@ var apiKey = process.env.API_KEY || require('./apiKey.js').google;
 
 // GET home page
 router.get('/', function(req, res, next) {
+  var ip = req.connection.remoteAddress;
+  console.log("\n\npage visit from " + ip + "\n\n");
   res.render('index', { title: 'MusicTiger' });
 });
 
@@ -44,6 +46,7 @@ router.get('/api/videostats', function(req, res, next) {
   var id = req.query.videoId;
   var query = "https://www.googleapis.com/youtube/v3/videos?" +
     "part=statistics,snippet&key=" + apiKey + "&id=" + id;
+    var ip = req.connection.remoteAddress;
 
   https.get(query, function(res) {
     res.setEncoding('utf8');
@@ -54,6 +57,7 @@ router.get('/api/videostats', function(req, res, next) {
 
     res.on('end', function () {
       var results = JSON.parse(responseData).items[0];
+      console.log("\n\n" + results.snippet.title + " viewed from " + ip + "\n\n");
       outRes.json(results);
     });
   }).end();
