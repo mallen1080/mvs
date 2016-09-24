@@ -57,7 +57,7 @@ router.get('/api/videostats', function(req, res, next) {
 
     res.on('end', function () {
       var results = JSON.parse(responseData).items[0];
-      console.log("\n\n" + results.snippet.title + " viewed from " + ip + "\n\n");
+      console.log("\n\n" + results.snippet.title + " viewed from " + ip + " on " + new Date() + "\n\n");
       outRes.json(results);
     });
   }).end();
