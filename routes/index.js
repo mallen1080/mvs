@@ -6,7 +6,7 @@ var apiKey = process.env.API_KEY || require('./apiKey.js').google;
 // GET home page
 router.get('/', function(req, res, next) {
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  console.log("\n\npage visit from " + ip + "\n\n");
+  console.log("\n\npage visit from " + ip + " on " + new Date() + "\n\n");
   res.render('index', { title: 'MusicTiger' });
 });
 
@@ -47,7 +47,7 @@ router.get('/api/videostats', function(req, res, next) {
   var query = "https://www.googleapis.com/youtube/v3/videos?" +
     "part=statistics,snippet&key=" + apiKey + "&id=" + id;
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  
+
   https.get(query, function(res) {
     res.setEncoding('utf8');
     var responseData = "";
