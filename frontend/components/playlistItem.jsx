@@ -5,7 +5,6 @@ var parseTitleString = require('../sharedFuncs').parseTitleString;
 var PlaylistItem = React.createClass({
 
   render: function () {
-    if (!this.props.video.snippet.thumbnails) { return <li className="tile">Video Not Available</li>; }
     var imgUrl = this.props.video.snippet.thumbnails.medium.url;
     var artist = parseTitleString(this.props.video.snippet.title).artist;
     var title = parseTitleString(this.props.video.snippet.title).title;
