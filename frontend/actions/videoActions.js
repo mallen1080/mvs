@@ -23,7 +23,7 @@ var VideoActions = {
     Dispatcher.dispatch(action);
   },
 
-  removeFromQueue: function (i, e) {
+  removeFromQueue: function (i) {
     var action = {
       actionType: "REMOVE_FROM_QUEUE",
       i: i
