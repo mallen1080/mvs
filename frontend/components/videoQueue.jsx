@@ -20,15 +20,20 @@ var VideoQueue = React.createClass({
     this.setState({ videoList: VideoStore.videoQueue() });
   },
 
+  queueItemClick: function (videoId, i, e) {
+    videoActions.changeVideo(videoId, e);
+    videoActions.removeFromQueue(i, e);
+  },
+
   videoQueue: function () {
     return this.state.videoList.map(function (video, i) {
       return (
         <li key={i}>
-          <p onClick={videoActions.changeVideo.bind(null, video.videoId)}>{video.title}</p>
+          <p onClick={this.queueItemClick.bind(null, video.videoId, i)}>{video.title}</p>
           <span onClick={videoActions.removeFromQueue.bind(null, i)}>x</span>
         </li>
       );
-    });
+    }.bind(this));
   },
 
   render: function () {
