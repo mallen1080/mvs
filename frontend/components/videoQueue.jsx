@@ -22,7 +22,7 @@ var VideoQueue = React.createClass({
 
   queueItemClick: function (videoId, i, e) {
     videoActions.changeVideo(videoId, e);
-    videoActions.removeFromQueue(i, e);
+    videoActions.removeFromQueue(i);
   },
 
   videoQueue: function () {
