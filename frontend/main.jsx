@@ -23,6 +23,7 @@ var Main = React.createClass({
   },
 
   changeVideo: function (videoId, e) {
+    debugger
     var vidId = VideoStore.currentVideo();
     var cpli = VideoStore.currentPlaylistItem();
 
