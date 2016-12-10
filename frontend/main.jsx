@@ -26,7 +26,7 @@ var Main = React.createClass({
     var vidId = VideoStore.currentVideo();
     var cpli = VideoStore.currentPlaylistItem();
 
-    if (vidId === this.state.videoId) { return; }
+    if (!vidId || vidId === this.state.videoId) { return; }
     $('.playing').removeClass('playing');
     if (cpli) { $(cpli).addClass("playing"); }
     this.setState({ videoId: vidId });
@@ -57,9 +57,11 @@ var Main = React.createClass({
     var down = parseInt(stats.statistics.dislikeCount);
     var views = stats.statistics.viewCount;
     var pub = stats.snippet.publishedAt;
+    var title = stats.snippet.title;
 
     return (
       <div className="video-stats">
+        <div>{title}</div>
         <p>{this.commafy(views)} views</p>
         <p>{Math.floor(100 * (up / (up + down)))}% likes</p>
         <p>{dateParse(pub)}</p>
