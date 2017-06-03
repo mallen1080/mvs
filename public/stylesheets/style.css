@@ -247,6 +247,7 @@ iframe {
   overflow-y: hidden;
   display: flex;
   flex-flow: row nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 
 .playlist-container::-webkit-scrollbar {
